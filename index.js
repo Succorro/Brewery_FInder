@@ -1,7 +1,7 @@
 const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
 const brewerySearch = document.getElementById('search')
-const oldDiv = document.getElementById('displayDiv')
+let oldDiv = document.getElementById('displayDiv')
 
 breweryForm.addEventListener('submit', fetchApi)
 
@@ -37,10 +37,21 @@ function createList(breweries){
 };
 
 function displayBrewery(breweries){
+    // oldDiv.
     console.log(breweries)
-    let j = document.createElement('li')
-    j.id= 'display'
-    j.innerHTML = `<p>${breweries[0].name}</p>`
-    oldDiv.appendChild(j)
+    // let j = document.createElement('li')
+    let j =`<img src="/Images/PouringBeer.jpg" alt="Beer being poured" />
+    <h3>${breweries[0].name}</h3>
+    <ul id="Information">
+      <li>${breweries[0].brewery_type} Brewery</li>
+      <li>${breweries[0].street} ${breweries[0].city}, ${breweries[0].state}</li>
+      <li>
+        <a href="${breweries[0].website_url}"
+          >Website</a
+        >
+      </li>
+    </ul>`
+    oldDiv.innerHTML = j
+    console.log(oldDiv)
 }
 
