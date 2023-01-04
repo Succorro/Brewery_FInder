@@ -19,13 +19,24 @@ function fetchApi(event){
         }
     })
     .then(r=> r.json())
-    .then(data => {
-        data.forEach(data=> createList(data))
-    })
+    .then(data => updateList(data))
 };
 
-function createList(breweries){
+function updateList(breweries){
     // console.log(breweries)
+    removeChildren(breweryList);
+    breweries.forEach(b=>addList(b))
+};
+
+function removeChildren(data){
+    let child = data.lastElementChild
+    while (child){
+        data.removeChild(child)
+        child = data.lastElementChild
+    }
+};
+
+function addList(breweries){
     let i = document.createElement('li')
     i.id = 'newList'
     i.innerHTML = `<p>${breweries.name} </p>`
@@ -52,7 +63,7 @@ function displayBrewery(breweries){
       <li>${breweries[0].street} ${breweries[0].city}, ${breweries[0].state}</li>
       <li>Call: (${breweries[0].phone.slice(0,3)})-${breweries[0].phone.slice(3,6)}-${breweries[0].phone.slice(6)}</li>
       <li>
-        <a href="${breweries[0].website_url}"
+        <a href="${breweries[0].website_url}" target="_blank"
           >Website</a
         >
       </li>
