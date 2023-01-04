@@ -17,7 +17,10 @@ div {
     padding: 5px;
 }
 
-#form {
+#newList{
+    display: block;
+}
+#section {
     border:  solid;
     border-radius: 5px;
     border-color: bisque;
@@ -50,5 +53,3 @@ li {
 a{
     color: black;
 }
-/* #information::first-line{
-} */
