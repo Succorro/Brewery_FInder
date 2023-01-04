@@ -1,0 +1,54 @@
+html{
+    background-image: linear-gradient(to top, #c98a04, whitesmoke);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#body {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+div {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+#form {
+    border:  solid;
+    border-radius: 5px;
+    border-color: bisque;
+    border-width: .3rem;
+    width: fit-content;
+    background-color: whitesmoke;
+}
+#type{
+    border: 0px;
+    background-color: whitesmoke;
+}
+#search {
+    border: 0px;
+    background-color: whitesmoke;
+}
+#search::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#searchbtn{
+    border: 0px;
+    border-radius: 5px;
+    background-color: #c98a04;
+    text-decoration-color: whitesmoke;
+}
+li {
+    list-style: none;
+    padding: 5px;
+}
+a{
+    color: black;
+}
+/* #information::first-line{
+} */
