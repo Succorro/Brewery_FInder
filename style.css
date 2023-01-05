@@ -28,6 +28,7 @@ div {
     width: fit-content;
     background-color: whitesmoke;
 }
+
 #type{
     border: 0px;
     background-color: whitesmoke;
@@ -43,7 +44,8 @@ div {
 #searchbtn{
     border: 0px;
     border-radius: 5px;
-    background-color: #c98a04;
+    padding: 1rem;
+    background-color: bisque;
     text-decoration-color: whitesmoke;
 }
 li {
@@ -60,4 +62,7 @@ img{
     width: 30rem;
     height: 30rem;
     object-fit: contain;
+}
+h3{
+    font-size: x-large;
 }

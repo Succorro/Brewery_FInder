@@ -61,7 +61,7 @@ function displayBrewery(breweries){
     <ul id="Information">
       <li>${breweries[0].brewery_type} Brewery</li>
       <li>${breweries[0].street} ${breweries[0].city}, ${breweries[0].state}</li>
-      <li>Call: (${breweries[0].phone.slice(0,3)})-${breweries[0].phone.slice(3,6)}-${breweries[0].phone.slice(6)}</li>
+      <li>Call: (${breweries[0].phone.slice(0,3)}) ${breweries[0].phone.slice(3,6)}-${breweries[0].phone.slice(6)}</li>
       <li>
         <a href="${breweries[0].website_url}" target="_blank"
           >Website</a
@@ -69,6 +69,6 @@ function displayBrewery(breweries){
       </li>
     </ul>`
     oldDiv.innerHTML = j
-    console.log(oldDiv)
+    // console.log(oldDiv)
 }
 
