@@ -8,12 +8,28 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <section id="body">
+    <header>
+      <div id="navBar">
+        <div id="nav">
+          <a id="home" href="/index.html">Home</a>
+          <nav>
+            <a href="#searchSection">Get Searching</a>
+            <a href="https://twitter.com/Stevogtz"
+              ><img id="logo" src="/twitterLogo.png" alt="twitterLogo" /></a
+            ><a href=""></a>
+          </nav>
+        </div>
+      </div>
+      <div id="coverImage">
+        <img src="/mainPageImage.jpg" alt="beer on tap" />
+      </div>
+    </header>
+    <section id="searchSection">
       <div id="leftPanel">
         <h1>Find Brewery</h1>
-        <section id="section">
+        <section id="formSection">
           <form id="form">
-            <select name="type" id="type">
+            <select name="type" id="dropDown">
               <option value="All">All</option>
               <option value="Micro">Micro</option>
               <option value="BrewPub">BrewPub</option>
@@ -31,7 +47,7 @@
         <h2>Brewery's near you:</h2>
         <ul id="list"></ul>
       </div>
-      <div id="displayDiv">
+      <div id="rightPanel">
         <img src="/Images/PouringBeer.jpg" alt="Beer being poured" />
         <h3>Barrel Head Brewhouse</h3>
         <ul id="Information">
@@ -48,7 +64,9 @@
     </section>
     <script type="application/javascript" src="/index.js"></script>
     <footer>
-      <div><h4>Images provided by Unsplash Images</h4></div>
+      <div>
+        <h4>Images provided by Unsplash Images</h4>
+      </div>
     </footer>
   </body>
 </html>
