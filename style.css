@@ -7,7 +7,7 @@ html{
 body {
     display: block;
     font-family: Arial, Helvetica, sans-serif;
-    
+    margin: 0;
 }
 header{
     width: 100vw;
@@ -19,28 +19,96 @@ header{
     padding: 15px 0;
     z-index: 100;
     top: 0;
+    background-color: whitesmoke;
+}
+#nav{
+    display: flex;
+    flex-direction: row;
 }
 #home{
     display: inline-block;
-    color: bisque;
+    color: gray;
     border-radius: 5px;
     padding: 5px;
     text-decoration: none;
+    margin-right: 500px;
 }
 #home:hover{
-    background-color: bisque;
+    background-color: gray;
     color: whitesmoke;
 }
 nav{
-    float: right;
+    display: block;
+    position: relative;
+}
+a{
+    margin-left: 40px;
+}
+#s{
+    color: gray;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px;
+}
+#s:hover{
+    background-color: gray;
+    color: whitesmoke;
 }
 #logo{
-    width: 10px;
+    width: 20px;
 }
 #coverImage{
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 200px;
+}
+
+
+#searchSection{
+    display: flex;
+    width: 100vw;
+}
+#leftPanel{
+    width: 50vw;
+}
+#rightPanel{
+    width: 50vw;
+}
+#formSection{
+    background-color: whitesmoke;
+    width: fit-content;
+}
+#search{
+    text-decoration: none;
+    border: 0;
+    background-color: whitesmoke;
+}
+#searchbtn{
+    border-radius: 5px;
+    border: 0px;
+    padding: 1rem;
+    background-color: bisque;
+    text-decoration-color: whitesmoke;
+}
+li{
+    list-style: none;
+    padding: 5px;
+}
+li::first-letter{
+    text-transform: uppercase;
+}
+a{
+    color: black;
+}
+.website{
+    margin-left: 0;
+}
+.img{
+    min-width: 30vw;
+    max-width: 50vw;
+    max-height: 50vh;
+    object-fit: cover;
+    
 }
 
 /* #newList{

@@ -1,7 +1,7 @@
 const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
 const brewerySearch = document.getElementById('search')
-let oldDiv = document.getElementById('displayDiv')
+let oldDiv = document.getElementById('rightPanel')
 let pictures = [
     "/Images/PouringBeer.jpg",
     "/Images/drink_on_counter.jpg",
@@ -56,7 +56,7 @@ function addList(breweries){
 function displayBrewery(breweries){
     let randomNum = Math.floor(Math.random() * pictures.length);
 
-    let j =`<img src=${pictures[randomNum]} alt="Beer being poured" />
+    let j =`<img class="img" src=${pictures[randomNum]} alt="Beer being poured" />
     <h3>${breweries[0].name}</h3>
     <ul id="Information">
       <li>${breweries[0].brewery_type} Brewery</li>
