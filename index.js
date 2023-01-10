@@ -60,8 +60,8 @@ function addList(breweries){
 };
 
 function handleSelect(){
-    let value = document.getElementById('hiddenP')
-    const remove = (sel) => document.querySelectorAll(sel).forEach(el => el.remove());
+    // let value = document.getElementById('hiddenP')
+    const remove = (select) => document.querySelectorAll(select).forEach(e => e.remove());
     if(option.value === 'micro'){
         remove('.brewpub');
         remove('.regional')
