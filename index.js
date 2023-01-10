@@ -1,3 +1,4 @@
+//Declared Variables
 const option = document.getElementById('dropDown')
 const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
@@ -11,8 +12,11 @@ let pictures = [
     "/Images/pouring_mug.jpg",
     "/Images/tall_glass.jpg"];
 
+// Event Listeners
+option.addEventListener('input', handleSelect)
 breweryForm.addEventListener('submit', fetchApi)
 
+// Functions
 
 function fetchApi(event){
     event.preventDefault();
@@ -26,7 +30,6 @@ function fetchApi(event){
 };
 
 function updateList(breweries){
-    // console.log(breweries)
     removeChildren(breweryList);
     breweries.forEach(b=>addList(b))
 };
