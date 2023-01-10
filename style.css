@@ -71,12 +71,17 @@ a{
 #leftPanel{
     width: 50vw;
 }
-#rightPanel{
-    width: 50vw;
+h1{
+    margin-left: 60px;
 }
 #formSection{
-    background-color: whitesmoke;
+    background-color: none;
     width: fit-content;
+}
+#form{
+    margin-left: 60px;
+    background-color: whitesmoke;
+    border-radius: 5px;
 }
 #search{
     text-decoration: none;
@@ -90,12 +95,37 @@ a{
     background-color: bisque;
     text-decoration-color: whitesmoke;
 }
+#underLeft{
+    display: flex;
+    margin-top: 10px;
+}
+h2{
+    margin-left: 60px;
+}
+select{
+    border: 0;
+    background-color: whitesmoke;
+    margin-left: 10px;
+    border-radius: 10px;
+    height: 3vh;
+    align-self: center;
+}
 li{
     list-style: none;
-    padding: 5px;
+    font-size: large;
+}
+#hiddenP{
+    text-indent: -9999px;
 }
 li::first-letter{
     text-transform: uppercase;
+}
+p{
+    margin-left: 60px;
+}
+
+#rightPanel{
+    width: 50vw;
 }
 a{
     color: black;
@@ -110,62 +140,6 @@ a{
     object-fit: cover;
     
 }
-
-/* #newList{
-    display: block;
-}
-#upperSection {
-    width: 1vw;
-    display: inline-flex;
-}
-#section {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    border:  solid;
-    border-radius: 5px;
-    border-color: bisque;
-    border-width: .3rem;
-    width: 1vw;
-    background-color: whitesmoke;
-}
-#displayDiv{
-    width: 50%;
-}
-#type{
-    border: 0px;
-    background-color: whitesmoke;
-}
-#search {
-    border: 0px;
-    background-color: whitesmoke;
-}
-#search::placeholder {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#searchbtn{
-    border: 0px;
-    border-radius: 5px;
-    padding: 1rem;
-    background-color: bisque;
-    text-decoration-color: whitesmoke;
-}
-li {
-    list-style: none;
-    padding: 5px;
-}
-a{
-    color: black;
-}
-li::first-letter{
-    text-transform: uppercase;
-}
-img{
-    width: 30rem;
-    height: 30rem;
-    object-fit: contain;
-}
 h3{
     font-size: x-large;
-} */
+}

@@ -29,13 +29,6 @@
         <h1>Find Brewery</h1>
         <section id="formSection">
           <form id="form">
-            <select name="type" id="dropDown">
-              <option value="All">All</option>
-              <option value="Micro">Micro</option>
-              <option value="BrewPub">BrewPub</option>
-              <option value="Nano">Nano</option>
-              <option value="Regional">Regional</option>
-            </select>
             <input
               id="search"
               type="text"
@@ -44,7 +37,17 @@
             <input id="searchbtn" type="submit" />
           </form>
         </section>
-        <h2>Brewery's near you:</h2>
+        <div id="underLeft">
+          <h2>Brewery's near you:</h2>
+          <select name="brewType" id="dropDown" onchange="handleSelect()">
+            <option value="refine" hidden selected>Refine Search</option>
+            <option value="All">All</option>
+            <option value="micro">Micro</option>
+            <option value="brewpub">BrewPub</option>
+            <option value="nano">Nano</option>
+            <option value="regional">Regional</option>
+          </select>
+        </div>
         <ul id="list"></ul>
       </div>
       <div id="rightPanel">

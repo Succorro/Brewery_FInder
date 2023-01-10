@@ -1,3 +1,4 @@
+const option = document.getElementById('dropDown')
 const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
 const brewerySearch = document.getElementById('search')
@@ -9,7 +10,9 @@ let pictures = [
     "/Images/full_glass.jpg",
     "/Images/pouring_mug.jpg",
     "/Images/tall_glass.jpg"];
+
 breweryForm.addEventListener('submit', fetchApi)
+
 
 function fetchApi(event){
     event.preventDefault();
@@ -39,7 +42,7 @@ function removeChildren(data){
 function addList(breweries){
     let i = document.createElement('li')
     i.id = 'newList'
-    i.innerHTML = `<p>${breweries.name} </p>`
+    i.innerHTML = `<p class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
     breweryList.appendChild(i)
     // console.log(breweries.name)
     i.addEventListener('click', ()=>{
@@ -52,6 +55,47 @@ function addList(breweries){
             .then(data => displayBrewery(data))
     })
 };
+
+function handleSelect(){
+    let value = document.getElementById('hiddenP')
+    const remove = (sel) => document.querySelectorAll(sel).forEach(el => el.remove());
+    if(option.value === 'micro'){
+        remove('.brewpub');
+        remove('.regional')
+        remove('.nano')
+        remove('.large')
+        remove('.proprietor')
+        remove('.contract')
+    }else if (option.value === 'brewpub'){
+        remove('.micro');
+        remove('regional');
+        remove('.nano')
+        remove('.large')
+        remove('.proprietor')
+        remove('.contract')
+    }else if (option.value === 'regional'){
+        remove('.micro');
+        remove('.brewpub')
+        remove('.nano')
+        remove('.large')
+        remove('.proprietor')
+        remove('.contract')
+    }else if (option.value === 'nano'){
+        remove('.micro')
+        remove('.brewpub')
+        remove('.regional')
+        remove('.large')
+        remove('.proprietor')
+        remove('.contract')
+    } else if (option.value === 'large'){
+        remove('.micro')
+        remove('.brewpub')
+        remove('.regional')
+        remove('.nano')
+        remove('.proprietor')
+        remove('.contract')
+    } 
+ }
 
 function displayBrewery(breweries){
     let randomNum = Math.floor(Math.random() * pictures.length);
