@@ -110,8 +110,8 @@ function displayBrewery(breweries){
       <li>${breweries[0].street} ${breweries[0].city}, ${breweries[0].state}</li>
       <li>Call: (${breweries[0].phone.slice(0,3)}) ${breweries[0].phone.slice(3,6)}-${breweries[0].phone.slice(6)}</li>
       <li>
-        <a href="${breweries[0].website_url}" target="_blank"
-          >Website</a
+        <a class="website" href="${breweries[0].website_url}" target="_blank"
+          >${breweries[0].website_url}</a
         >
       </li>
     </ul>`
