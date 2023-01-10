@@ -45,7 +45,7 @@ function removeChildren(data){
 function addList(breweries){
     let i = document.createElement('li')
     i.id = 'newList'
-    i.innerHTML = `<p class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
+    i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
     breweryList.appendChild(i)
     // console.log(breweries.name)
     i.addEventListener('click', ()=>{
