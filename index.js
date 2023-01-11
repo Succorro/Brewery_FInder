@@ -7,12 +7,17 @@ const breweryList = document.getElementById('list')
 const brewerySearch = document.getElementById('search')
 let oldDiv = document.getElementById('rightPanel')
 let pictures = [
-    "/Images/PouringBeer.jpg",
-    "/Images/drink_on_counter.jpg",
+    "/Images/Beer_On_Mountain.jpg",
+    "/Images/Beer_On_The_Beach.jpg",
+    "/Images/Cheers_Mug.jpg",
+    "/Images/Cheers.jpg",
     "/Images/fish_tacos.jpg",
-    "/Images/full_glass.jpg",
+    "/Images/Full_Round_Glass.jpg",
+    "/Images/Holding_Beer.jpg",
+    "/Images/Mug_Beer.jpg",
     "/Images/pouring_mug.jpg",
-    "/Images/tall_glass.jpg"];
+    "/Images/PouringBeer.jpg",
+    "/Images/Round_Glass_On_Table.jpg",];
 
 
 // Event Listeners
@@ -151,7 +156,7 @@ function addRegional(breweries){
 function displayBrewery(breweries){
     let randomNum = Math.floor(Math.random() * pictures.length);
 
-    let j =`<img class="img" src=${pictures[randomNum]} alt="Beer being poured" />
+    let j =`<img class="img" src=${pictures[randomNum]} alt="Beer photo" />
     <h3>${breweries[0].name}</h3>
     <ul id="Information">
       <li>${breweries[0].brewery_type} Brewery</li>

@@ -126,6 +126,7 @@ select{
 li{
     list-style: none;
     font-size: large;
+    width: fit-content;
 }
 li #bList:hover{
     color: blueviolet;
@@ -140,6 +141,7 @@ li::first-letter{
 }
 p{
     margin-left: 60px;
+    width: fit-content;
 }
 
 #rightPanel{
@@ -152,12 +154,19 @@ a{
     margin-left: 0;
 }
 .img{
-    min-width: 30vw;
+    min-width: 45vw;
     max-width: 50vw;
     max-height: 50vh;
     object-fit: cover;
-    
+    border-radius: 5px;
 }
 h3{
     font-size: x-large;
+}
+
+h4{
+    margin: 20px;
+    font-size: smaller;
+    display: flex;
+    flex-direction: row-reverse;
 }
