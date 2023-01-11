@@ -13,13 +13,14 @@ let pictures = [
     "/Images/tall_glass.jpg"];
 
 // Event Listeners
-option.addEventListener('input', handleSelect)
+option.addEventListener('input', fetchApi)
 breweryForm.addEventListener('submit', fetchApi)
 
 // Functions
 
 function fetchApi(event){
     event.preventDefault();
+    // console.log('1st')
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${brewerySearch.value}&per_page=100`,{
         headers: {
             'Accept': 'applicaiton/json'
@@ -30,8 +31,19 @@ function fetchApi(event){
 };
 
 function updateList(breweries){
+    // console.log('2nd')
     removeChildren(breweryList);
-    breweries.forEach(b=>addList(b))
+    if(option.value === 'refine'|| option.value === 'All'){
+        breweries.forEach(b=>addList(b))
+    } else if (option.value === 'micro'){
+        breweries.forEach(b=>addMicro(b))
+    } else if (option.value === 'brewpub'){
+        breweries.forEach(b=>addBrewPub(b))
+    }else if (option.value === 'nano'){
+        breweries.forEach(b=>addNano(b))
+    }else if (option.value === 'regional'){
+        breweries.forEach(b=>addRegional(b))
+    }
 };
 
 function removeChildren(data){
@@ -59,46 +71,119 @@ function addList(breweries){
     })
 };
 
-function handleSelect(){
-    // let value = document.getElementById('hiddenP')
-    const remove = (select) => document.querySelectorAll(select).forEach(e => e.remove());
-    if(option.value === 'micro'){
-        remove('.brewpub');
-        remove('.regional')
-        remove('.nano')
-        remove('.large')
-        remove('.proprietor')
-        remove('.contract')
-    }else if (option.value === 'brewpub'){
-        remove('.micro');
-        remove('regional');
-        remove('.nano')
-        remove('.large')
-        remove('.proprietor')
-        remove('.contract')
-    }else if (option.value === 'regional'){
-        remove('.micro');
-        remove('.brewpub')
-        remove('.nano')
-        remove('.large')
-        remove('.proprietor')
-        remove('.contract')
-    }else if (option.value === 'nano'){
-        remove('.micro')
-        remove('.brewpub')
-        remove('.regional')
-        remove('.large')
-        remove('.proprietor')
-        remove('.contract')
-    } else if (option.value === 'large'){
-        remove('.micro')
-        remove('.brewpub')
-        remove('.regional')
-        remove('.nano')
-        remove('.proprietor')
-        remove('.contract')
-    } 
- }
+function addMicro(breweries){
+    if(breweries.brewery_type === 'micro'){
+        let i = document.createElement('li')
+        i.id = 'newList'
+        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
+        breweryList.appendChild(i)
+        i.addEventListener('click', ()=>{
+            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(r => r.json())
+                .then(data => displayBrewery(data))
+        })
+    }
+};
+
+function addBrewPub(breweries){
+    if(breweries.brewery_type === 'brewpub'){
+        let i = document.createElement('li')
+        i.id = 'newList'
+        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
+        breweryList.appendChild(i)
+        i.addEventListener('click', ()=>{
+            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(r => r.json())
+                .then(data => displayBrewery(data))
+        })
+    }
+};
+
+function addNano(breweries){
+    if(breweries.brewery_type === 'nano'){
+        let i = document.createElement('li')
+        i.id = 'newList'
+        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
+        breweryList.appendChild(i)
+        i.addEventListener('click', ()=>{
+            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(r => r.json())
+                .then(data => displayBrewery(data))
+        })
+    }
+};
+
+function addRegional(breweries){
+    if(breweries.brewery_type === 'regional'){
+        let i = document.createElement('li')
+        i.id = 'newList'
+        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
+        breweryList.appendChild(i)
+        i.addEventListener('click', ()=>{
+            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(r => r.json())
+                .then(data => displayBrewery(data))
+        })
+    }
+};
+
+
+// function handleSelect(){
+//     // let value = document.getElementById('hiddenP')
+//     const remove = (select) => document.querySelectorAll(select).forEach(e => e.remove());
+//     if(option.value === 'micro'){
+//         remove('.brewpub');
+//         remove('.regional')
+//         remove('.nano')
+//         remove('.large')
+//         remove('.proprietor')
+//         remove('.contract')
+//     }else if (option.value === 'brewpub'){
+//         remove('.micro');
+//         remove('regional');
+//         remove('.nano')
+//         remove('.large')
+//         remove('.proprietor')
+//         remove('.contract')
+//     }else if (option.value === 'regional'){
+//         remove('.micro');
+//         remove('.brewpub')
+//         remove('.nano')
+//         remove('.large')
+//         remove('.proprietor')
+//         remove('.contract')
+//     }else if (option.value === 'nano'){
+//         remove('.micro')
+//         remove('.brewpub')
+//         remove('.regional')
+//         remove('.large')
+//         remove('.proprietor')
+//         remove('.contract')
+//     } else if (option.value === 'large'){
+//         remove('.micro')
+//         remove('.brewpub')
+//         remove('.regional')
+//         remove('.nano')
+//         remove('.proprietor')
+//         remove('.contract')
+//     } 
+//  }
 
 function displayBrewery(breweries){
     let randomNum = Math.floor(Math.random() * pictures.length);

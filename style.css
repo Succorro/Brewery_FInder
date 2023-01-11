@@ -130,6 +130,7 @@ li{
 li #bList:hover{
     color: blueviolet;
     cursor: pointer;
+    margin-right: 245px;
 }
 #hiddenP{
     text-indent: -9999px;
@@ -156,9 +157,6 @@ a{
     max-height: 50vh;
     object-fit: cover;
     
-}
-.w {
-    margin-left: 0;
 }
 h3{
     font-size: x-large;
