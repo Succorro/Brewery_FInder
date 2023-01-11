@@ -163,6 +163,9 @@ a{
 h3{
     font-size: x-large;
 }
+#Information li{
+    padding-bottom: 10px;
+}
 
 h4{
     margin: 20px;
