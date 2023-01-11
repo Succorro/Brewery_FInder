@@ -1,4 +1,6 @@
 //Declared Variables
+
+// const remove = (select) => document.querySelectorAll(select).forEach(e => e.remove());
 const option = document.getElementById('dropDown')
 const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
@@ -12,9 +14,12 @@ let pictures = [
     "/Images/pouring_mug.jpg",
     "/Images/tall_glass.jpg"];
 
+
 // Event Listeners
+
 option.addEventListener('input', fetchApi)
 breweryForm.addEventListener('submit', fetchApi)
+
 
 // Functions
 
@@ -142,48 +147,6 @@ function addRegional(breweries){
         })
     }
 };
-
-
-// function handleSelect(){
-//     // let value = document.getElementById('hiddenP')
-//     const remove = (select) => document.querySelectorAll(select).forEach(e => e.remove());
-//     if(option.value === 'micro'){
-//         remove('.brewpub');
-//         remove('.regional')
-//         remove('.nano')
-//         remove('.large')
-//         remove('.proprietor')
-//         remove('.contract')
-//     }else if (option.value === 'brewpub'){
-//         remove('.micro');
-//         remove('regional');
-//         remove('.nano')
-//         remove('.large')
-//         remove('.proprietor')
-//         remove('.contract')
-//     }else if (option.value === 'regional'){
-//         remove('.micro');
-//         remove('.brewpub')
-//         remove('.nano')
-//         remove('.large')
-//         remove('.proprietor')
-//         remove('.contract')
-//     }else if (option.value === 'nano'){
-//         remove('.micro')
-//         remove('.brewpub')
-//         remove('.regional')
-//         remove('.large')
-//         remove('.proprietor')
-//         remove('.contract')
-//     } else if (option.value === 'large'){
-//         remove('.micro')
-//         remove('.brewpub')
-//         remove('.regional')
-//         remove('.nano')
-//         remove('.proprietor')
-//         remove('.contract')
-//     } 
-//  }
 
 function displayBrewery(breweries){
     let randomNum = Math.floor(Math.random() * pictures.length);
