@@ -6,6 +6,8 @@ const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
 const brewerySearch = document.getElementById('search')
 let oldDiv = document.getElementById('rightPanel')
+let form = document.querySelector('form')
+console.log(form)
 let pictures = [
     "/Images/Beer_On_Mountain.jpg",
     "/Images/Beer_On_The_Beach.jpg",
