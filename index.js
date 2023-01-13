@@ -6,8 +6,6 @@ const breweryForm = document.getElementById('form')
 const breweryList = document.getElementById('list')
 const brewerySearch = document.getElementById('search')
 let oldDiv = document.getElementById('rightPanel')
-let form = document.querySelector('form')
-console.log(form)
 let pictures = [
     "/Images/Beer_On_Mountain.jpg",
     "/Images/Beer_On_The_Beach.jpg",
@@ -20,12 +18,13 @@ let pictures = [
     "/Images/pouring_mug.jpg",
     "/Images/PouringBeer.jpg",
     "/Images/Round_Glass_On_Table.jpg",];
-
+const nav = document.getElementById('navBar')
 
 // Event Listeners
 
 option.addEventListener('input', fetchApi)
 breweryForm.addEventListener('submit', fetchApi)
+window.addEventListener('scroll', handleScroll)
 
 
 // Functions
@@ -172,5 +171,13 @@ function displayBrewery(breweries){
     </ul>`
     oldDiv.innerHTML = j
     // console.log(oldDiv)
+};
+
+function handleScroll(event){
+    if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20 ){
+        nav.style.top = '0'
+    } else {
+        nav.style.top = '-50px'
+    }
 }
 
