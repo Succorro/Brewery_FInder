@@ -81,7 +81,6 @@ a{
     font: bold;
     width: 37vw;
     height: 28vh;
-    text-align: justify;
 }
 
 
@@ -95,7 +94,7 @@ a{
 }
 h1{
     margin-top: 40vh;
-    margin-left: 20vw;
+    margin-left: 22vw;
     margin-bottom: 0%;
 }
 #search1{
@@ -106,7 +105,7 @@ h1{
     background-color: #f36235;
     text-decoration: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-left: 15vw;
+    margin-left: 22vw;
     font-weight: 600;
     font-size: xx-large;
 }
