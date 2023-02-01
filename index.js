@@ -19,165 +19,71 @@ let pictures = [
     "/Images/PouringBeer.jpg",
     "/Images/Round_Glass_On_Table.jpg",];
 const nav = document.getElementById('navBar')
+let breweriesArray;
 
 // Event Listeners
 
-option.addEventListener('input', fetchApi)
 breweryForm.addEventListener('submit', fetchApi)
+option.addEventListener('input', updateList)
 window.addEventListener('scroll', handleScroll)
-
 
 // Functions
 
 function fetchApi(event){
     event.preventDefault();
-    // console.log('1st')
     fetch(`https://api.openbrewerydb.org/breweries?by_city=${brewerySearch.value}&per_page=100`,{
         headers: {
             'Accept': 'applicaiton/json'
         }
     })
     .then(r=> r.json())
-    .then(data => updateList(data))
+    .then(data => {
+        breweriesArray = data
+        updateList()})
+
 };
 
-function updateList(breweries){
-    // console.log('2nd')
-    removeChildren(breweryList);
-    if(option.value === 'refine'|| option.value === 'All'){
-        breweries.forEach(b=>addList(b))
-    } else if (option.value === 'micro'){
-        breweries.forEach(b=>addMicro(b))
-    } else if (option.value === 'brewpub'){
-        breweries.forEach(b=>addBrewPub(b))
-    }else if (option.value === 'nano'){
-        breweries.forEach(b=>addNano(b))
-    }else if (option.value === 'regional'){
-        breweries.forEach(b=>addRegional(b))
-    }
+function updateList(){
+    breweryList.innerText = ''
+    const filteredArray = breweriesArray.filter(breweryObj => {
+        if(option.value === 'refine'|| option.value === 'All') return true
+        if(option.value === breweryObj.brewery_type) return true
+    })
+    filteredArray.forEach(breweryObj => addList(breweryObj))
 };
 
-function removeChildren(data){
-    let child = data.lastElementChild
-    while (child){
-        data.removeChild(child)
-        child = data.lastElementChild
-    }
-};
-
-function addList(breweries){
+function addList(brewery){
     let i = document.createElement('li')
     i.id = 'newList'
-    i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
+    i.innerHTML = `<p id="bList"class="${brewery.brewery_type}">${brewery.name}</p><p id="hiddenP" class="${brewery.brewery_type}">${brewery.brewery_type}</p>`
     breweryList.appendChild(i)
-    // console.log(breweries.name)
     i.addEventListener('click', ()=>{
-        fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-            .then(r => r.json())
-            .then(data => displayBrewery(data))
+         displayBrewery(brewery)
     })
 };
 
-function addMicro(breweries){
-    if(breweries.brewery_type === 'micro'){
-        let i = document.createElement('li')
-        i.id = 'newList'
-        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
-        breweryList.appendChild(i)
-        i.addEventListener('click', ()=>{
-            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(r => r.json())
-                .then(data => displayBrewery(data))
-        })
-    }
-};
-
-function addBrewPub(breweries){
-    if(breweries.brewery_type === 'brewpub'){
-        let i = document.createElement('li')
-        i.id = 'newList'
-        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
-        breweryList.appendChild(i)
-        i.addEventListener('click', ()=>{
-            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(r => r.json())
-                .then(data => displayBrewery(data))
-        })
-    }
-};
-
-function addNano(breweries){
-    if(breweries.brewery_type === 'nano'){
-        let i = document.createElement('li')
-        i.id = 'newList'
-        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
-        breweryList.appendChild(i)
-        i.addEventListener('click', ()=>{
-            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(r => r.json())
-                .then(data => displayBrewery(data))
-        })
-    }
-};
-
-function addRegional(breweries){
-    if(breweries.brewery_type === 'regional'){
-        let i = document.createElement('li')
-        i.id = 'newList'
-        i.innerHTML = `<p id="bList"class="${breweries.brewery_type}">${breweries.name}</p><p id="hiddenP" class="${breweries.brewery_type}">${breweries.brewery_type}</p>`
-        breweryList.appendChild(i)
-        i.addEventListener('click', ()=>{
-            fetch (`https://api.openbrewerydb.org/breweries?by_name=${breweries.name}`,{
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(r => r.json())
-                .then(data => displayBrewery(data))
-        })
-    }
-};
-
-function displayBrewery(breweries){
+function displayBrewery(brewery){
     let randomNum = Math.floor(Math.random() * pictures.length);
-
+    // console.log(brewery)
     let j =`<img class="img" src=${pictures[randomNum]} alt="Beer photo" />
-    <h3>${breweries[0].name}</h3>
+    <h3>${brewery.name}</h3>
     <ul id="Information">
-      <li>${breweries[0].brewery_type} Brewery</li>
-      <li>${breweries[0].street} ${breweries[0].city}, ${breweries[0].state}</li>
-      <li>Call: (${breweries[0].phone.slice(0,3)}) ${breweries[0].phone.slice(3,6)}-${breweries[0].phone.slice(6)}</li>
+      <li>${brewery.brewery_type} Brewery</li>
+      <li>${brewery.street} ${brewery.city}, ${brewery.state}</li>
+      <li>Call: (${brewery.phone.slice(0,3)}) ${brewery.phone.slice(3,6)}-${brewery.phone.slice(6)}</li>
       <li>
-        <a class="website" href="${breweries[0].website_url}" target="_blank"
-          >${breweries[0].website_url}</a
+        <a class="website" href="${brewery.website_url}" target="_blank"
+          >${brewery.website_url}</a
         >
       </li>
     </ul>`
     oldDiv.innerHTML = j
-    // console.log(oldDiv)
 };
 
-function handleScroll(event){
-    if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20 ){
+function handleScroll(){
+    if(document.documentElement.scrollTop > 20 ){
         nav.style.top = '0'
     } else {
         nav.style.top = '-50px'
     }
-}
-
+};
